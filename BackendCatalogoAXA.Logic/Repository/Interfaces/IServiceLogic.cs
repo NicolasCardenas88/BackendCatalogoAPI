@@ -1,4 +1,5 @@
 ﻿using BackendCatalogoAXA.Data.Context;
+using BackendCatalogoAXA.Data.Dto.DtoServicio;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,8 @@ namespace BackendCatalogoAXA.Logic.Repository.Interfaces
 {
     public interface IServiceLogic 
     {
-        Task<Servicio> FindServicioByIdAsync(int id); 
+        Task<DetailsServicioDto> FindServicioByIdAsync(int id);
+        Task<List<Servicio>> FindAllServicios();
+
     }
 }
