@@ -10,9 +10,16 @@ namespace BackendCatalogoAXA.Controllers
 
 
         [HttpGet("/findservicio/{id}")]
-        public async Task<IActionResult> GetServiceById(int id)
+        public  async Task<IActionResult> GetServiceById(int id)
         {
             var service = await _serviceLogic.FindServicioByIdAsync(id);
+            return Ok(service);
+
+        }
+        [HttpGet ("/findallservice")]
+        public async Task <IActionResult> GetAllServices()
+        {
+            var service = await _serviceLogic.FindAllServicios();
             return Ok(service);
         }
     }
