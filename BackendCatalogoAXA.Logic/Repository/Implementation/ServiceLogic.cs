@@ -1,4 +1,6 @@
 ﻿using BackendCatalogoAXA.Data.Context;
+using BackendCatalogoAXA.Data.Dto.DtoServicio;
+using BackendCatalogoAXA.Data.Mapper.MapperService;
 using BackendCatalogoAXA.Data.Repository.Interfaces;
 using BackendCatalogoAXA.Logic.Repository.Interfaces;
 using System;
@@ -13,10 +15,17 @@ namespace BackendCatalogoAXA.Logic.Repository.Implementation
     {
         private readonly IGetData _getData = getData;
 
-        public async Task<Servicio> FindServicioByIdAsync(int id)
+
+        public async Task<DetailsServicioDto> FindServicioByIdAsync(int id)
         {
-            var servicio = await _getData.FindServicioByIdAsync(id);
+            return await _getData.FindServicioByIdAsync(id);
+           
+        }
+        public async Task<List<Servicio>> FindAllServicios()
+        {
+            var servicio = await _getData.FindAllServicios();
             return servicio;
         }
+
     }
 }

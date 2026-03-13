@@ -1,4 +1,5 @@
 using BackendCatalogoAXA.Data.Context;
+using BackendCatalogoAXA.Data.Mapper.MapperService;
 using BackendCatalogoAXA.Data.Repository.Implementation;
 using BackendCatalogoAXA.Data.Repository.Interfaces;
 using BackendCatalogoAXA.Logic.Repository.Implementation;
@@ -15,6 +16,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddTransient<IServiceLogic, ServiceLogic>();
 builder.Services.AddTransient<IGetData, GetData>();
 builder.Services.AddTransient<CatalogoServiciosAxaContext, CatalogoServiciosAxaContext>();
+builder.Services.AddAutoMapper(typeof(ServicioProfile));
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
