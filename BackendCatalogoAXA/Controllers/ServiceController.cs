@@ -1,5 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using BackendCatalogoAXA.Data.Dto.DtoFiltroServicio;
 using BackendCatalogoAXA.Logic.Repository.Interfaces;
+using Microsoft.AspNetCore.Mvc;
 namespace BackendCatalogoAXA.Controllers
 {
     [ApiController]
@@ -21,6 +22,15 @@ namespace BackendCatalogoAXA.Controllers
         {
             var service = await _serviceLogic.FindAllServicios();
             return Ok(service);
+        }
+
+        [HttpGet("/filterservice")]
+        public async Task<IActionResult> GetServiciosByFiltro([FromQuery] FiltroServicioDto filtro)
+        {
+            var result = await _serviceLogic.FindServiciosByFiltroAsync(filtro);
+            if (!result.Any())
+                return NotFound("No se encontraron servicios");
+            return Ok(result);
         }
     }
 }
