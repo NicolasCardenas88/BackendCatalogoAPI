@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace BackendCatalogoAXA.Data.Dto.DtoMetodoHttp
 {
-    public class MetodoHttpDto
+    public class CreateMetodoHttpDto
     {
-        public int Id { get; set; }
         public string Nombre { get; set; }
     }
 }
