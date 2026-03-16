@@ -4,11 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BackendCatalogoAXA.Data.Dto.DtoMetodoHttp
+namespace BackendCatalogoAXA.Data.Dto.DtoEntorno
 {
-    public class MetodoHttpDto
+    public class CreateEntornoDto
     {
-        public int Id { get; set; }
         public string Nombre { get; set; }
     }
 }

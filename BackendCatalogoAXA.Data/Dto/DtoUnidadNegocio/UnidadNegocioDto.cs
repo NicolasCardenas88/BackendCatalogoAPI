@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BackendCatalogoAXA.Data.Dto.DtoMetodoHttp
+namespace BackendCatalogoAXA.Data.Dto.DtoUnidadNegocio
 {
-    public class MetodoHttpDto
+    public class UnidadNegocioDto
     {
-        public int Id { get; set; }
+       public int Id { get; set; }
         public string Nombre { get; set; }
     }
 }

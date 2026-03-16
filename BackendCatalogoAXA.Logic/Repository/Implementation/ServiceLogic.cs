@@ -1,4 +1,5 @@
 ﻿using BackendCatalogoAXA.Data.Context;
+using BackendCatalogoAXA.Data.Dto.DtoFiltroServicio;
 using BackendCatalogoAXA.Data.Dto.DtoServicio;
 using BackendCatalogoAXA.Data.Mapper.MapperService;
 using BackendCatalogoAXA.Data.Repository.Interfaces;
@@ -25,6 +26,10 @@ namespace BackendCatalogoAXA.Logic.Repository.Implementation
         {
             var servicio = await _getData.FindAllServicios();
             return servicio;
+        }
+        public async Task<IEnumerable<DetailsServicioDto>> FindServiciosByFiltroAsync(FiltroServicioDto filtro)
+        {
+            return await _getData.FindServiciosByFiltroAsync(filtro);
         }
 
     }
