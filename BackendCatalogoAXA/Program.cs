@@ -4,6 +4,7 @@ using BackendCatalogoAXA.Data.Repository.Implementation;
 using BackendCatalogoAXA.Data.Repository.Interfaces;
 using BackendCatalogoAXA.Logic.Repository.Implementation;
 using BackendCatalogoAXA.Logic.Repository.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,9 +15,15 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddTransient<IServiceLogic, ServiceLogic>();
+builder.Services.AddTransient<IRegisterLogic, RegisterLogic>();
 builder.Services.AddTransient<IGetData, GetData>();
+builder.Services.AddTransient<IRegisterData, RegisterData>();
 builder.Services.AddTransient<CatalogoServiciosAxaContext, CatalogoServiciosAxaContext>();
+builder.Services.AddDbContext<CatalogoServiciosAxaContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("Default")));
+
 builder.Services.AddAutoMapper(typeof(ServicioProfile));
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
