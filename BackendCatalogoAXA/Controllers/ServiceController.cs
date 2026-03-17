@@ -1,14 +1,16 @@
-﻿using BackendCatalogoAXA.Data.Dto.DtoFiltroServicio;
+﻿using BackendCatalogoAXA.Data.Dto.CrearServicioDtoServicio;
+using BackendCatalogoAXA.Data.Dto.DtoFiltroServicio;
 using BackendCatalogoAXA.Logic.Repository.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 namespace BackendCatalogoAXA.Controllers
 {
     [ApiController]
     [Route("api/catalogo")]
-    public class ServiceController (IServiceLogic serviceLogic) : ControllerBase
+    public class ServiceController (IServiceLogic serviceLogic, 
+        IRegisterLogic registerLogic) : ControllerBase
     {
         private readonly IServiceLogic _serviceLogic = serviceLogic;
-
+        private readonly IRegisterLogic _registerLogic = registerLogic;
 
         [HttpGet("/findservicio/{id}")]
         public  async Task<IActionResult> GetServiceById(int id)
@@ -32,5 +34,13 @@ namespace BackendCatalogoAXA.Controllers
                 return NotFound("No se encontraron servicios");
             return Ok(result);
         }
+
+        [HttpPost("/createservicio")]
+        public async  Task<CrearServicioDto> CreateServicioAsync([FromBody] CrearServicioDto crearServicioDto)
+        {
+            var result = await _registerLogic.RegisterLogicAsync(crearServicioDto);
+            return crearServicioDto;
+        }
+
     }
 }
