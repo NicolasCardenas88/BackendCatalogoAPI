@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace BackendCatalogoAXA.Data.Dto.DtoLog
 {
-    public class CreateLog
+    public class CreateLogDto
     {
-        public string Codigo { get; set; } 
+        public string Codigo { get; set; }
         public string RutaLog { get; set; }
     }
 }

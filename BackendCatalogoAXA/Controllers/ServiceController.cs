@@ -38,7 +38,7 @@ namespace BackendCatalogoAXA.Controllers
         [HttpPost("/createservicio")]
         public async  Task<CrearServicioDto> CreateServicioAsync([FromBody] CrearServicioDto crearServicioDto)
         {
-            var result = await _registerLogic.RegisterLogicAsync(crearServicioDto);
+            var result = await _registerLogic.RegisterServiceAsync(crearServicioDto);
             return crearServicioDto;
         }
 
