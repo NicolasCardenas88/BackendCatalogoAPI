@@ -1,5 +1,4 @@
 ﻿using BackendCatalogoAXA.Data.Context;
-using BackendCatalogoAXA.Data.Dto.CrearServicioDtoServicio;
 using BackendCatalogoAXA.Data.Dto.DtoLog;
 using BackendCatalogoAXA.Logic.Repository.Interfaces;
 using Microsoft.AspNetCore.Mvc;
@@ -13,13 +12,13 @@ namespace BackendCatalogoAXA.Controllers
         private readonly IRegisterLogic _registerLogic = registerLogic;
 
         [HttpPost("servicio/{servicioId}/logs")]
-        public async Task<IActionResult> CrearLogParaServicio(int servicioId, [FromBody] CreateLogDto createLogDto)
+        public async Task<IActionResult> CreateLogForServicio(int servicioId, [FromBody] CreateLogDto createLogDto)
         {
-            await _registerLogic.RegisterLogAsync<CreateLogDto, Log, ServicioLog>(
+             await _registerLogic.RegisterLogAsync<CreateLogDto, Log, ServicioLog>(
                 createLogDto,
                 servicioId,
                 (servicioId, logId) => new ServicioLog { ServicioId = servicioId, LogId = logId });
-            return Ok();
+            return Ok(createLogDto);
         }
 
     }
