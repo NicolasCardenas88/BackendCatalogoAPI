@@ -4,11 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BackendCatalogoAXA.Data.Dto.DtoUnidadNegocio
+namespace BackendCatalogoAXA.Data.Dto.DtoTipoServicio
 {
-    public class CreateUnidadNegocioDto
+    public class CreateTipoServicioDto
     {
-        private string? _Nombre {  get; set; }
+        private string? _Nombre;
+
         public string? Nombre
         {
             get => _Nombre;

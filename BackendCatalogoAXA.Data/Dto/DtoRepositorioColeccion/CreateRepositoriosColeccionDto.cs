@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BackendCatalogoAXA.Data.Dto.DtoRepositorioColeccion
 {
-    public class CreateRepositoriosColeecionDto
+    public class CreateRepositoriosColeccionDto
     {
         public string Codigo { get; set; }
         public int ServicioId { get; set; }

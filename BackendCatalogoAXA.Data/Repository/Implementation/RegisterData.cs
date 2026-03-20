@@ -12,14 +12,11 @@ namespace BackendCatalogoAXA.Data.Repository.Implementation
         {
 
                 await _context.AddAsync(registerObject);
-                var juu = registerObject;
                 var response = await _context.SaveChangesAsync();
                 if (response < 0)
                 {
                     return false;
-                }
-                var juku = registerObject;
-                
+                }                
        
             return true;
         }

@@ -8,7 +8,19 @@ namespace BackendCatalogoAXA.Data.Dto.DtoLog
 {
     public class CreateLogDto
     {
-        public string Codigo { get; set; }
-        public string RutaLog { get; set; }
+        private string? _Codigo;
+        private string? _RutaLog;
+        public string? Codigo
+        {
+            get => _Codigo;
+            set => _Codigo= value.Trim() ;
+        }
+        public string? RutaLog
+        {
+            get => _RutaLog;
+            set => _RutaLog = value.Trim();
+        }
+
+
     }
 }
