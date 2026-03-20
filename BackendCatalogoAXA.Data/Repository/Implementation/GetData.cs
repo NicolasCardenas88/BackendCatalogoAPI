@@ -39,7 +39,6 @@ namespace BackendCatalogoAXA.Data.Repository.Implementation
             
         }
 
-
         public async Task<List<Servicio>> FindAllServicios()
         {
             return _context.Servicios.ToList();
