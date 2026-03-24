@@ -11,8 +11,8 @@ namespace BackendCatalogoAXA.Controllers
     {
         private readonly IRegisterLogic _registerLogic = registerLogic;
 
-        [HttpPost("/createestado/")]
-        public async Task<CreateUnidadNegocioDto> CreateEstado([FromBody] CreateUnidadNegocioDto createUnidadNegocioDto)
+        [HttpPost("/createunidadnegocio/")]
+        public async Task<CreateUnidadNegocioDto> CreateUnidadNegocio([FromBody] CreateUnidadNegocioDto createUnidadNegocioDto)
         {
             var result = await _registerLogic.RegisterUnidadNegocioAsync(createUnidadNegocioDto);
             return createUnidadNegocioDto;

@@ -1,27 +1,32 @@
 ﻿using AutoMapper;
 using BackendCatalogoAXA.Data.Context;
 using BackendCatalogoAXA.Data.Dto.CrearServicioDtoServicio;
+using BackendCatalogoAXA.Data.Dto.DtoAmbiente;
 using BackendCatalogoAXA.Data.Dto.DtoApimanager;
 using BackendCatalogoAXA.Data.Dto.DtoAplicacion;
+using BackendCatalogoAXA.Data.Dto.DtoBalanceo;
 using BackendCatalogoAXA.Data.Dto.DtoEstado;
 using BackendCatalogoAXA.Data.Dto.DtoFramework;
 using BackendCatalogoAXA.Data.Dto.DtoMetodoHttp;
+using BackendCatalogoAXA.Data.Dto.DtoProtocolo;
+using BackendCatalogoAXA.Data.Dto.DtoRepositorio;
 using BackendCatalogoAXA.Data.Dto.DtoRepositorioColeccion;
 using BackendCatalogoAXA.Data.Dto.DtoTipoServicio;
 using BackendCatalogoAXA.Data.Dto.DtoUnidadNegocio;
 using BackendCatalogoAXA.Data.Repository.Interfaces;
 using BackendCatalogoAXA.Logic.Repository.Interfaces;
 using BackendCatalogoAXA.Model.Utils;
+using Microsoft.EntityFrameworkCore;
 
 
 namespace BackendCatalogoAXA.Logic.Repository.Implementation
 {
     public class RegisterLogic(IRegisterData registerData,
-        IMapper mapper) : IRegisterLogic
+        IMapper mapper, CatalogoServiciosAxaContext context) : IRegisterLogic
     {
         private readonly IRegisterData _register = registerData;
         private readonly IMapper _mapper = mapper;
-
+        private readonly CatalogoServiciosAxaContext _context = context;
 
         #region Crear Servicio
         public async Task<bool> RegisterServiceAsync(CrearServicioDto crearServicioDto)
@@ -159,6 +164,62 @@ namespace BackendCatalogoAXA.Logic.Repository.Implementation
             var result = await _register.RegisterLogicAsync(_mapper.Map<UnidadNegocio>(createUnidadNegocioDto));
             return true;
         }
+        #endregion
+
+        #region Crear Protocolo
+        public async Task <bool> RegisterProtocoloAsync (CreateProtocoloDto createProtocoloDto)
+        {
+            var result = await _register.RegisterLogicAsync(_mapper.Map<Protocolo>(createProtocoloDto));
+            return true;
+        }
+
+        #endregion
+
+        #region Crear Ambiente
+        public async Task <bool> RegisterAmbienteAsync(CreateAmbienteDto createAmbienteDto)
+        {
+            var result = await _register.RegisterLogicAsync(_mapper.Map<Ambiente>(createAmbienteDto));
+            return true;
+        }
+        #endregion
+
+        #region Crear Repositorio
+        public async Task<bool> RegisterRepositorioAsync(CreateRepositorioDto createRepositorioDto)
+        {
+            var result = await _register.RegisterLogicAsync(_mapper.Map<Repositorio>(createRepositorioDto));
+            return true;
+        }
+        #endregion
+
+        #region Crear Balanceo
+        public async Task<bool> RegisterBalanceoAsync(CreateBalanceoDto dto)
+        {
+            var servicio = await _context.Servicios
+                .FirstOrDefaultAsync(s => s.ServicioId == dto.ServicioID);
+
+            if (servicio == null) return false;
+
+            var balanceo = new Balanceo
+            {
+                Codigo = dto.Codigo,
+                Url = dto.URL,
+                AmbienteId = (int)dto.AmbienteID
+            };
+
+            var balanceoCreado = await _register.RegisterLogicAsync(balanceo);
+            if (!balanceoCreado) return false;
+
+            var balanceoServicio = new BalanceoServicio
+            {
+                BalanceoId = balanceo.BalanceoId,
+                ServicioId = (int)dto.ServicioID,
+                Urlcompleta = dto.URLCompleta
+            };
+
+            return await _register.RegisterLogicAsync(balanceoServicio);
+        }
+
+
         #endregion
 
     }
