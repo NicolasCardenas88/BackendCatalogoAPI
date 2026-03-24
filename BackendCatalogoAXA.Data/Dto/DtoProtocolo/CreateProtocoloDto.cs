@@ -8,6 +8,12 @@ namespace BackendCatalogoAXA.Data.Dto.DtoProtocolo
 {
     public class CreateProtocoloDto
     {
-        public string Nombre { get; set; }
+        private string? _Nombre;
+
+        public string? Nombre
+        {
+            get => _Nombre;
+            set => _Nombre = value.Trim();
+        }
     }
 }

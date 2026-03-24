@@ -10,6 +10,8 @@ using BackendCatalogoAXA.Data.Dto.DtoFramework;
 using BackendCatalogoAXA.Data.Dto.DtoLog;
 using BackendCatalogoAXA.Data.Dto.DtoMetodoHttp;
 using BackendCatalogoAXA.Data.Dto.DtoModulo;
+using BackendCatalogoAXA.Data.Dto.DtoProtocolo;
+using BackendCatalogoAXA.Data.Dto.DtoRepositorio;
 using BackendCatalogoAXA.Data.Dto.DtoRepositorioColeccion;
 using BackendCatalogoAXA.Data.Dto.DtoServicio;
 using BackendCatalogoAXA.Data.Dto.DtoServicioModulo;
@@ -30,6 +32,7 @@ namespace BackendCatalogoAXA.Data.Mapper.MapperService
             CreateMap<MetodoHttp, MetodoHttpDto>().ReverseMap();
             CreateMap<MetodoHttp,  CreateMetodoHttpDto>().ReverseMap();
             CreateMap<Ambiente, AmbienteDto>().ReverseMap();
+            CreateMap<Ambiente, CreateAmbienteDto>().ReverseMap();
             CreateMap<BalanceoServicio, BalanceoServicioDto>().ReverseMap();
             CreateMap<ServicioModulo, ServicioModuloDto>().ReverseMap();
             CreateMap<ServicioModulo, CreateServicioModuloDto>().ReverseMap();
@@ -45,6 +48,8 @@ namespace BackendCatalogoAXA.Data.Mapper.MapperService
             CreateMap<TipoServicio, CreateTipoServicioDto>().ReverseMap();
             CreateMap<Estado, CreateEstadoDto>().ReverseMap();
             CreateMap<UnidadNegocio, CreateUnidadNegocioDto>().ReverseMap();
+            CreateMap<Protocolo, CreateProtocoloDto>().ReverseMap();
+            CreateMap<Repositorio, CreateRepositorioDto>().ReverseMap();
 
         }
     }

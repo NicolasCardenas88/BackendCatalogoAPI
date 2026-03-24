@@ -6,7 +6,7 @@ namespace BackendCatalogoAXA.Controllers
 {
     [ApiController]
     [Route("api/catalogo")]
-    public class RepositorioColeccion(IRegisterLogic registerLogic) : ControllerBase
+    public class RepositorioColeccionController(IRegisterLogic registerLogic) : ControllerBase
     {
         private readonly IRegisterLogic _registerLogic = registerLogic;
 
