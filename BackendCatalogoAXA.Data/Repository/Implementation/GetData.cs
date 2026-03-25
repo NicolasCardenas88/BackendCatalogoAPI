@@ -1,24 +1,18 @@
 ﻿using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using BackendCatalogoAXA.Data.Context;
-using BackendCatalogoAXA.Data.Dto.DtoAmbiente;
-using BackendCatalogoAXA.Data.Dto.DtoApimanager;
-using BackendCatalogoAXA.Data.Dto.DtoBalanceo;
-using BackendCatalogoAXA.Data.Dto.DtoFiltroServicio;
-using BackendCatalogoAXA.Data.Dto.DtoMetodoHttp;
-using BackendCatalogoAXA.Data.Dto.DtoServicio;
-using BackendCatalogoAXA.Data.Dto.DtoServicioModulo;
-using BackendCatalogoAXA.Data.Dto.Modulo;
-using BackendCatalogoAXA.Data.Mapper.MapperService;
 using BackendCatalogoAXA.Data.Repository.Interfaces;
+using BackendCatalogoAXA.Model.Dto.DtoAmbiente;
+using BackendCatalogoAXA.Model.Dto.DtoApimanager;
+using BackendCatalogoAXA.Model.Dto.DtoBalanceo;
+using BackendCatalogoAXA.Model.Dto.DtoFiltroServicio;
+using BackendCatalogoAXA.Model.Dto.DtoMetodoHttp;
+using BackendCatalogoAXA.Model.Dto.DtoServicio;
+using BackendCatalogoAXA.Model.Dto.DtoServicioModulo;
+using BackendCatalogoAXA.Model.Dto.Modulo;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace BackendCatalogoAXA.Data.Repository.Implementation
+namespace BackendCatalogoAXA.Model.Repository.Implementation
 {
     public class GetData(CatalogoServiciosAxaContext  axaContext, IMapper mapper) : IGetData
     {
@@ -109,6 +103,8 @@ namespace BackendCatalogoAXA.Data.Repository.Implementation
                 })
                 .ToListAsync();
         }
+
+
         #endregion
 
     }

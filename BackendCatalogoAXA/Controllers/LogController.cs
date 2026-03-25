@@ -1,7 +1,7 @@
-﻿using BackendCatalogoAXA.Data.Context;
-using BackendCatalogoAXA.Data.Dto.DtoLog;
+﻿using BackendCatalogoAXA.Model.Dto.DtoLog;
 using BackendCatalogoAXA.Logic.Repository.Interfaces;
 using Microsoft.AspNetCore.Mvc;
+using BackendCatalogoAXA.Data.Context;
 
 namespace BackendCatalogoAXA.Controllers
 {

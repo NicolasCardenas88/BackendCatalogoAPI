@@ -1,10 +1,12 @@
-using BackendCatalogoAXA.Data.Context;
-using BackendCatalogoAXA.Data.Mapper.MapperService;
-using BackendCatalogoAXA.Data.Repository.Implementation;
-using BackendCatalogoAXA.Data.Repository.Interfaces;
+using BackendCatalogoAXA.Model.Mapper.MapperService;
+using BackendCatalogoAXA.Model.Repository.Implementation;
+using BackendCatalogoAXA.Model.Repository.Interfaces;
 using BackendCatalogoAXA.Logic.Repository.Implementation;
 using BackendCatalogoAXA.Logic.Repository.Interfaces;
+using BackendCatalogoAXA.Middleware;
 using Microsoft.EntityFrameworkCore;
+using BackendCatalogoAXA.Data.Repository.Interfaces;
+using BackendCatalogoAXA.Data.Context;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -32,11 +34,13 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
+ 
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.UseHttpsRedirection();
 
 app.Run();
