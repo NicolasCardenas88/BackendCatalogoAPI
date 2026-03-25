@@ -1,7 +1,5 @@
-using System;
 using System.Net;
 using System.Text.Json;
-using Microsoft.AspNetCore.Http;
 using BackendCatalogoAXA.Logic.Exceptions;
 
 namespace BackendCatalogoAXA.Middleware
@@ -42,6 +40,7 @@ namespace BackendCatalogoAXA.Middleware
                     break;
                 case AlreadyExistsException:
                     status = HttpStatusCode.Conflict;
+
                     break;
                 case DatabaseException:
                     status = HttpStatusCode.InternalServerError;

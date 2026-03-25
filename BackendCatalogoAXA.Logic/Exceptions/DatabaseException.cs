@@ -1,5 +1,3 @@
-using System;
-
 namespace BackendCatalogoAXA.Logic.Exceptions
 {
     public class DatabaseException : Exception

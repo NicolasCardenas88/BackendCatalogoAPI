@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using BackendCatalogoAXA.Data.Context;
 using Microsoft.EntityFrameworkCore;
 
 namespace BackendCatalogoAXA.Data.Context;

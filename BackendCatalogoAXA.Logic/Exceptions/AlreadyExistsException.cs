@@ -1,4 +1,3 @@
-using System;
 namespace BackendCatalogoAXA.Logic.Exceptions {
     public class AlreadyExistsException : Exception {
         public AlreadyExistsException() : base("El recurso ya existe") { }

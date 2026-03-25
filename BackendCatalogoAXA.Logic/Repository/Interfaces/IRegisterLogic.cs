@@ -1,16 +1,21 @@
-﻿using BackendCatalogoAXA.Data.Dto.CrearServicioDtoServicio;
-using BackendCatalogoAXA.Data.Dto.DtoAmbiente;
-using BackendCatalogoAXA.Data.Dto.DtoApimanager;
-using BackendCatalogoAXA.Data.Dto.DtoAplicacion;
-using BackendCatalogoAXA.Data.Dto.DtoBalanceo;
-using BackendCatalogoAXA.Data.Dto.DtoEstado;
-using BackendCatalogoAXA.Data.Dto.DtoFramework;
-using BackendCatalogoAXA.Data.Dto.DtoMetodoHttp;
-using BackendCatalogoAXA.Data.Dto.DtoProtocolo;
-using BackendCatalogoAXA.Data.Dto.DtoRepositorio;
-using BackendCatalogoAXA.Data.Dto.DtoRepositorioColeccion;
-using BackendCatalogoAXA.Data.Dto.DtoTipoServicio;
-using BackendCatalogoAXA.Data.Dto.DtoUnidadNegocio;
+﻿using BackendCatalogoAXA.Model.Dto.CrearServicioDtoServicio;
+using BackendCatalogoAXA.Model.Dto.DtoAmbiente;
+using BackendCatalogoAXA.Model.Dto.DtoApimanager;
+using BackendCatalogoAXA.Model.Dto.DtoAplicacion;
+using BackendCatalogoAXA.Model.Dto.DtoBalanceo;
+using BackendCatalogoAXA.Model.Dto.DtoCategoriaServidor;
+using BackendCatalogoAXA.Model.Dto.DtoEntorno;
+using BackendCatalogoAXA.Model.Dto.DtoEstado;
+using BackendCatalogoAXA.Model.Dto.DtoFramework;
+using BackendCatalogoAXA.Model.Dto.DtoMetodoHttp;
+using BackendCatalogoAXA.Model.Dto.DtoMotorDB;
+using BackendCatalogoAXA.Model.Dto.DtoProtocolo;
+using BackendCatalogoAXA.Model.Dto.DtoRepositorio;
+using BackendCatalogoAXA.Model.Dto.DtoRepositorioColeccion;
+using BackendCatalogoAXA.Model.Dto.DtoServidor;
+using BackendCatalogoAXA.Model.Dto.DtoSistemaOperativo;
+using BackendCatalogoAXA.Model.Dto.DtoTipoServicio;
+using BackendCatalogoAXA.Model.Dto.DtoUnidadNegocio;
 
 
 namespace BackendCatalogoAXA.Logic.Repository.Interfaces
@@ -30,6 +35,12 @@ namespace BackendCatalogoAXA.Logic.Repository.Interfaces
         Task<bool> RegisterAmbienteAsync(CreateAmbienteDto createAmbienteDto);
         Task<bool> RegisterRepositorioAsync(CreateRepositorioDto createRepositorioDto);
         Task<bool> RegisterBalanceoAsync(CreateBalanceoDto createBalanceoDto);
+        Task<bool> RegisterServidorAsync(CreateServidorDto createServidorDto);
+        Task<bool> RegisterSistemaOperativoAsync(CreateSistemaOperativoDto createSistemaOperativoDto);
+        Task<bool> RegisterMotorDbAsync(CreateMotorDbDto createMotorDbDto);
+        Task<bool> RegisterCategoriaServidorAsync(CreateCategoriaServidorDto createCategoriaServidorDto);
+        Task<bool> RegisterEntornoAsync(CreateEntornoDto createEntornoDto);
+
 
         Task<bool> RegisterLogAsync<TCreateDto, TEntidad, TRelacion>(
         TCreateDto createDto,

@@ -1,4 +1,4 @@
-﻿using BackendCatalogoAXA.Data.Dto.DtoApimanager;
+﻿using BackendCatalogoAXA.Model.Dto.DtoApimanager;
 using BackendCatalogoAXA.Logic.Repository.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 

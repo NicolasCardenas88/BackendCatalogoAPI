@@ -1,5 +1,5 @@
-﻿using BackendCatalogoAXA.Data.Dto.CrearServicioDtoServicio;
-using BackendCatalogoAXA.Data.Dto.DtoFiltroServicio;
+﻿using BackendCatalogoAXA.Model.Dto.CrearServicioDtoServicio;
+using BackendCatalogoAXA.Model.Dto.DtoFiltroServicio;
 using BackendCatalogoAXA.Logic.Repository.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 namespace BackendCatalogoAXA.Controllers
@@ -19,12 +19,7 @@ namespace BackendCatalogoAXA.Controllers
             return Ok(service);
 
         }
-        [HttpGet ("/findallservice")]
-        public async Task <IActionResult> GetAllServices()
-        {
-            var service = await _serviceLogic.FindAllServicios();
-            return Ok(service);
-        }
+
 
         [HttpGet("/filterservice")]
         public async Task<IActionResult> GetServiciosByFiltro([FromQuery] FiltroServicioDto filtro)
