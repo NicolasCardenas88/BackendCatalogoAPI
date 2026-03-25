@@ -1,7 +1,7 @@
 ﻿using BackendCatalogoAXA.Data.Context;
-using BackendCatalogoAXA.Data.Repository.Interfaces;
+using BackendCatalogoAXA.Model.Repository.Interfaces;
 
-namespace BackendCatalogoAXA.Data.Repository.Implementation
+namespace BackendCatalogoAXA.Model.Repository.Implementation
 {
     public class RegisterData(CatalogoServiciosAxaContext axaContext) : IRegisterData
     {

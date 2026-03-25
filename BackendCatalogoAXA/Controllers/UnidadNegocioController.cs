@@ -1,5 +1,4 @@
-﻿using BackendCatalogoAXA.Data.Dto.DtoEstado;
-using BackendCatalogoAXA.Data.Dto.DtoUnidadNegocio;
+﻿using BackendCatalogoAXA.Model.Dto.DtoUnidadNegocio;
 using BackendCatalogoAXA.Logic.Repository.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 

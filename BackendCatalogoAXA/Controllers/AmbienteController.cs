@@ -1,4 +1,4 @@
-﻿using BackendCatalogoAXA.Data.Dto.DtoAmbiente;
+﻿using BackendCatalogoAXA.Model.Dto.DtoAmbiente;
 using BackendCatalogoAXA.Logic.Repository.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
