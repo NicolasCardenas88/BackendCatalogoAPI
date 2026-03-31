@@ -1,4 +1,7 @@
-﻿namespace BackendCatalogoAXA.Model.Dto.CrearServicioDtoServicio
+﻿using BackendCatalogoAXA.Model.Dto.DtoRepositorioServicio;
+using BackendCatalogoAXA.Model.Dto.DtoServicioServidor;
+
+namespace BackendCatalogoAXA.Model.Dto.CrearServicioDtoServicio
 {
     public class CrearServicioDto
     {
@@ -19,5 +22,9 @@
         public string? Propietario { get; set; }
 
         public int? UnidadNegocioId { get; set; }
+
+        public List<CreateServicioServidorDto> RelacionServidor { get; set; } = new();
+
+        public List<CreateServicioRepositorioDto> RelacionRepositorio { get; set; } = new();
     }
 }
