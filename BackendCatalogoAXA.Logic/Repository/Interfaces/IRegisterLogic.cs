@@ -1,4 +1,5 @@
 ﻿using BackendCatalogoAXA.Model.Dto.CrearServicioDtoServicio;
+using BackendCatalogoAXA.Model.Dto.DtoActivo;
 using BackendCatalogoAXA.Model.Dto.DtoAmbiente;
 using BackendCatalogoAXA.Model.Dto.DtoApimanager;
 using BackendCatalogoAXA.Model.Dto.DtoAplicacion;
@@ -40,7 +41,7 @@ namespace BackendCatalogoAXA.Logic.Repository.Interfaces
         Task<bool> RegisterMotorDbAsync(CreateMotorDbDto createMotorDbDto);
         Task<bool> RegisterCategoriaServidorAsync(CreateCategoriaServidorDto createCategoriaServidorDto);
         Task<bool> RegisterEntornoAsync(CreateEntornoDto createEntornoDto);
-
+        Task<bool> RegisterActivoAsync(CreateActivoDto createActivoDto);
 
         Task<bool> RegisterLogAsync<TCreateDto, TEntidad, TRelacion>(
         TCreateDto createDto,

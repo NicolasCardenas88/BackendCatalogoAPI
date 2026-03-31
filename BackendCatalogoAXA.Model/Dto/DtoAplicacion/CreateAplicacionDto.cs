@@ -3,7 +3,7 @@
     public class CreateAplicacionDto
     {
         private string? _Codigo;
-        private string? _ActivoId;
+        private int? _ActivoId;
         private string? _NombreApp;
         private string? _DescripcionFuncional;
         private int? _EstadoId;
@@ -14,7 +14,7 @@
         private int? _UnidadNegocioId;
        
         public string? Codigo { get => _Codigo; set => _Codigo = value?.Trim(); }
-        public string? ActivoId { get => _ActivoId; set => _ActivoId = value?.Trim(); }
+        public int? ActivoId { get => _ActivoId; set => _ActivoId = value; }
         public string? NombreApp { get => _NombreApp; set => _NombreApp = value?.Trim(); }
         public string? DescripcionFuncional { get => _DescripcionFuncional; set => _DescripcionFuncional = value?.Trim(); }
         public int? EstadoId { get => _EstadoId; set => _EstadoId = value; }
