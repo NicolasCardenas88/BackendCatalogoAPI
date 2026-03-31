@@ -10,6 +10,7 @@ namespace BackendCatalogoAXA.Controllers
     {
         private readonly IRegisterLogic _registerLogic = registerLogic;
 
+        [HttpPost("activo/v1/")]
         public async Task<CreateActivoDto> RegisterActivoAsync(CreateActivoDto createActivoDto)
         {
             var result = await _registerLogic.RegisterActivoAsync(createActivoDto);
