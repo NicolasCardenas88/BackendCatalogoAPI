@@ -16,8 +16,10 @@ using BackendCatalogoAXA.Model.Dto.DtoMotorDB;
 using BackendCatalogoAXA.Model.Dto.DtoProtocolo;
 using BackendCatalogoAXA.Model.Dto.DtoRepositorio;
 using BackendCatalogoAXA.Model.Dto.DtoRepositorioColeccion;
+using BackendCatalogoAXA.Model.Dto.DtoRepositorioServicio;
 using BackendCatalogoAXA.Model.Dto.DtoServicio;
 using BackendCatalogoAXA.Model.Dto.DtoServicioModulo;
+using BackendCatalogoAXA.Model.Dto.DtoServicioServidor;
 using BackendCatalogoAXA.Model.Dto.DtoServidor;
 using BackendCatalogoAXA.Model.Dto.DtoSistemaOperativo;
 using BackendCatalogoAXA.Model.Dto.DtoTipoServicio;
@@ -61,6 +63,8 @@ namespace BackendCatalogoAXA.Model.Mapper.MapperService
             CreateMap<MotorBd, CreateMotorDbDto>().ReverseMap();
             CreateMap<CategoriaServidor, CreateCategoriaServidorDto>().ReverseMap();
             CreateMap<Entorno, CreateEntornoDto>().ReverseMap();
+            CreateMap<ServicioServidor, CreateServicioServidorDto>().ReverseMap();
+            CreateMap<RepositorioServicio, CreateServicioRepositorioDto>().ReverseMap();
 
         }
     }
