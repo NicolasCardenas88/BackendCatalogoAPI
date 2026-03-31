@@ -1,6 +1,4 @@
-﻿
-using BackendCatalogoAXA.Data.Context;
-using BackendCatalogoAXA.Model.Dto.DtoFiltroServicio;
+﻿using BackendCatalogoAXA.Model.Dto.DtoFiltroServicio;
 using BackendCatalogoAXA.Model.Dto.DtoServicio;
 
 namespace BackendCatalogoAXA.Data.Repository.Interfaces
