@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using BackendCatalogoAXA.Data.Context;
 using BackendCatalogoAXA.Model.Dto.CrearServicioDtoServicio;
+using BackendCatalogoAXA.Model.Dto.DtoActivo;
 using BackendCatalogoAXA.Model.Dto.DtoAmbiente;
 using BackendCatalogoAXA.Model.Dto.DtoApimanager;
 using BackendCatalogoAXA.Model.Dto.DtoAplicacion;
@@ -23,6 +24,7 @@ using BackendCatalogoAXA.Model.Dto.DtoServicioServidor;
 using BackendCatalogoAXA.Model.Dto.DtoServidor;
 using BackendCatalogoAXA.Model.Dto.DtoSistemaOperativo;
 using BackendCatalogoAXA.Model.Dto.DtoTipoServicio;
+using BackendCatalogoAXA.Model.Dto.DtoTipoServidor;
 using BackendCatalogoAXA.Model.Dto.DtoUnidadNegocio;
 using BackendCatalogoAXA.Model.Dto.Modulo;
 
@@ -65,7 +67,7 @@ namespace BackendCatalogoAXA.Model.Mapper.MapperService
             CreateMap<Entorno, CreateEntornoDto>().ReverseMap();
             CreateMap<ServicioServidor, CreateServicioServidorDto>().ReverseMap();
             CreateMap<RepositorioServicio, CreateServicioRepositorioDto>().ReverseMap();
-
+            CreateMap<Action, CreateActivoDto>().ReverseMap();
         }
     }
 }

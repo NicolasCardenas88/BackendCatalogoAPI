@@ -23,6 +23,8 @@ using BackendCatalogoAXA.Logic.Repository.Interfaces;
 using BackendCatalogoAXA.Model.Utils;
 using Microsoft.EntityFrameworkCore;
 using BackendCatalogoAXA.Data.Context;
+using BackendCatalogoAXA.Model.Dto.DtoActivo;
+using BackendCatalogoAXA.Models;
 
 namespace BackendCatalogoAXA.Logic.Repository.Implementation
 {
@@ -720,6 +722,28 @@ namespace BackendCatalogoAXA.Logic.Repository.Implementation
             var result = await _register.RegisterLogicAsync(_mapper.Map<Entorno>(createEntornoDto));
             return true;
         }
-        #endregion 
+        #endregion
+
+        #region Crear Activo
+        public async Task<bool> RegisterActivoAsync(CreateActivoDto createActivoDto)
+        {
+            if (createActivoDto == null)
+                throw new ValidationException("El objeto Activo no puede ser nulo");
+            if (string.IsNullOrWhiteSpace(createActivoDto.Nombre))
+                throw new ValidationException("El campo Nombre es obligatorio");
+            if(string.IsNullOrWhiteSpace(createActivoDto.Codigo))
+                throw new ValidationException("El campo Codigo es obligatorio");
+            if (createActivoDto.Codigo.Length > 10)
+                throw new ValidationException("El codigo debe ser menor a 10 caracteres");
+            if (createActivoDto.Nombre.Length > 200)
+                throw new ValidationException("El nombre debe ser menor a 200 caracteres");
+            var yaExiste = await _context.Activos
+                .AnyAsync(a => a.Nombre == createActivoDto.Nombre);
+            if (yaExiste)
+                throw new AlreadyExistsException($"Ya existe un Activo con el Nombre '{createActivoDto.Nombre}'");
+            var result = await _register.RegisterLogicAsync(_mapper.Map<Activo>(createActivoDto));
+            return true;
+        }
+        #endregion
     }
 }
