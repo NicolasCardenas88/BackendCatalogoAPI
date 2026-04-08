@@ -7,6 +7,7 @@ using BackendCatalogoAXA.Middleware;
 using Microsoft.EntityFrameworkCore;
 using BackendCatalogoAXA.Data.Repository.Interfaces;
 using BackendCatalogoAXA.Data.Context;
+using BackendCatalogoAXA.Data.Repository.Implementation;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -26,6 +27,13 @@ builder.Services.AddDbContext<CatalogoServiciosAxaContext>(options =>
 
 builder.Services.AddAutoMapper(typeof(ServicioProfile));
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
+builder.Services.AddScoped<IAmbienteData, AmbienteData>();
+builder.Services.AddScoped<IAmbienteLogic, AmbienteLogic>();
+
+builder.Services.AddScoped<IApiManagerData, ApiManagerData>();
+builder.Services.AddScoped<IApiManagerLogic, ApiManagerLogic>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
