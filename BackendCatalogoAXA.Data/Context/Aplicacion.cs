@@ -23,7 +23,7 @@ public partial class Aplicacion
     public string? Urlprod { get; set; }
 
     public int? UnidadNegocioId { get; set; }
-
+    public virtual Activo? activo { get; set; }
     public virtual Estado Estado { get; set; } = null!;
 
     public virtual Framework? Framework { get; set; }

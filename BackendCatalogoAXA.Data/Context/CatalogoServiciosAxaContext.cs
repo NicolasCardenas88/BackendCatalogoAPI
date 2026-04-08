@@ -144,8 +144,6 @@ public partial class CatalogoServiciosAxaContext : DbContext
 
             entity.Property(e => e.AplicacionId).HasColumnName("AplicacionID");
             entity.Property(e => e.ActivoId)
-                .HasMaxLength(20)
-                .IsUnicode(false)
                 .HasColumnName("ActivoID");
             entity.Property(e => e.Codigo)
                 .HasMaxLength(10)
