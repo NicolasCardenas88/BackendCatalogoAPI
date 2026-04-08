@@ -34,6 +34,9 @@ builder.Services.AddScoped<IAmbienteLogic, AmbienteLogic>();
 builder.Services.AddScoped<IApiManagerData, ApiManagerData>();
 builder.Services.AddScoped<IApiManagerLogic, ApiManagerLogic>();
 
+builder.Services.AddScoped<IAplicacionData, AplicacionData>();
+builder.Services.AddScoped<IAplicacionLogic, AplicacionLogic>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

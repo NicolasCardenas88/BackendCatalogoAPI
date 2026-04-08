@@ -1,4 +1,5 @@
-﻿using BackendCatalogoAXA.Data.Context;
+﻿using System;
+using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 
 namespace BackendCatalogoAXA.Data.Context;
@@ -13,6 +14,8 @@ public partial class CatalogoServiciosAxaContext : DbContext
         : base(options)
     {
     }
+
+    public virtual DbSet<Activo> Activos { get; set; }
 
     public virtual DbSet<Ambiente> Ambientes { get; set; }
 
@@ -64,11 +67,30 @@ public partial class CatalogoServiciosAxaContext : DbContext
 
     public virtual DbSet<UnidadNegocio> UnidadNegocios { get; set; }
 
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) { }
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
+        => optionsBuilder.UseSqlServer("Server=(localdb)\\MSSQLLocalDB;Database=CatalogoServiciosAXA;Trusted_Connection=True;");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.UseCollation("Latin1_General_CI_AS");
+
+        modelBuilder.Entity<Activo>(entity =>
+        {
+            entity.ToTable("Activo");
+
+            entity.HasIndex(e => e.Codigo, "UQ_Activo_Codigo").IsUnique();
+
+            entity.Property(e => e.ActivoId).HasColumnName("ActivoID");
+            entity.Property(e => e.Codigo)
+                .HasMaxLength(10)
+                .IsUnicode(false)
+                .IsFixedLength();
+            entity.Property(e => e.Nombre)
+                .HasMaxLength(200)
+                .IsUnicode(false);
+            entity.Property(e => e.TieneMfa).HasColumnName("TieneMFA");
+        });
 
         modelBuilder.Entity<Ambiente>(entity =>
         {
@@ -143,8 +165,7 @@ public partial class CatalogoServiciosAxaContext : DbContext
             entity.HasIndex(e => e.Codigo, "UQ_Aplicacion_Codigo").IsUnique();
 
             entity.Property(e => e.AplicacionId).HasColumnName("AplicacionID");
-            entity.Property(e => e.ActivoId)
-                .HasColumnName("ActivoID");
+            entity.Property(e => e.ActivoId).HasColumnName("ActivoID");
             entity.Property(e => e.Codigo)
                 .HasMaxLength(10)
                 .IsUnicode(false)
@@ -168,6 +189,10 @@ public partial class CatalogoServiciosAxaContext : DbContext
                 .HasMaxLength(500)
                 .IsUnicode(false)
                 .HasColumnName("URLUAT");
+
+            entity.HasOne(d => d.Activo).WithMany(p => p.Aplicacions)
+                .HasForeignKey(d => d.ActivoId)
+                .HasConstraintName("FK_Aplicacion_Activo");
 
             entity.HasOne(d => d.Estado).WithMany(p => p.Aplicacions)
                 .HasForeignKey(d => d.EstadoId)

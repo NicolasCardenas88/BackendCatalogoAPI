@@ -1,9 +1,17 @@
-﻿namespace BackendCatalogoAXA.Data.Context
+﻿using System;
+using System.Collections.Generic;
+
+namespace BackendCatalogoAXA.Data.Context;
+
+public partial class Activo
 {
-    public partial class Activo
-    {
-        public int Id { get; set; }
-        public string? Codigo { get; set; } = null;
-        public string? Nombre { get; set; } = null;
-    }
+    public int ActivoId { get; set; }
+
+    public string Codigo { get; set; } = null!;
+
+    public string Nombre { get; set; } = null!;
+
+    public bool? TieneMfa { get; set; }
+
+    public virtual ICollection<Aplicacion> Aplicacions { get; set; } = new List<Aplicacion>();
 }
