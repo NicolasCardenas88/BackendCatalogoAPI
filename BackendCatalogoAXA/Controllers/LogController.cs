@@ -7,11 +7,12 @@ namespace BackendCatalogoAXA.Controllers
 {
     [ApiController]
     [Route("api/catalogo")]
-    public class LogController(IRegisterLogic registerLogic) : ControllerBase
+    public class LogController(IRegisterLogic registerLogic, ILogLogic logLogic) : ControllerBase
     {
         private readonly IRegisterLogic _registerLogic = registerLogic;
+        private readonly ILogLogic _logLogic = logLogic;
 
-        [HttpPost("servicio/{servicioId}/logs")]
+        [HttpPost("/logs/V1/{servicioId}")]
         public async Task<IActionResult> CreateLogForServicio(int servicioId, [FromBody] CreateLogDto createLogDto)
         {
              await _registerLogic.RegisterLogAsync<CreateLogDto, Log, ServicioLog>(
@@ -21,5 +22,11 @@ namespace BackendCatalogoAXA.Controllers
             return Ok(createLogDto);
         }
 
+        [HttpGet("/logs/V1")]
+        public async Task<IActionResult> GetLog()
+        {
+            var result = await _logLogic.GetAllAsync();
+            return Ok(result);
+        }
     }
 }
