@@ -43,6 +43,9 @@ builder.Services.AddScoped<IEntornoLogic, EntornoLogic>();
 builder.Services.AddScoped<IEstadoData, EstadoData>();
 builder.Services.AddScoped<IEstadoLogic, EstadoLogic>();
 
+builder.Services.AddScoped<IFrameworkData, FrameworkData>();
+builder.Services.AddScoped<IFrameworkLogic, FrameworkLogic>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
