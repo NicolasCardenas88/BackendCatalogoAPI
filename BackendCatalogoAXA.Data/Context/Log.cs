@@ -1,4 +1,7 @@
-﻿namespace BackendCatalogoAXA.Data.Context;
+﻿using System;
+using System.Collections.Generic;
+
+namespace BackendCatalogoAXA.Data.Context;
 
 public partial class Log
 {
