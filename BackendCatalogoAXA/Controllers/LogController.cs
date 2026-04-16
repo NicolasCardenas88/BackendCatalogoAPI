@@ -11,13 +11,10 @@ namespace BackendCatalogoAXA.Controllers
     {
         private readonly IRegisterLogic _registerLogic = registerLogic;
 
-        [HttpPost("servicio/{servicioId}/logs")]
-        public async Task<IActionResult> CreateLogForServicio(int servicioId, [FromBody] CreateLogDto createLogDto)
+        [HttpPost("servicio/logs")]
+        public async Task<IActionResult> CreateLogAsync([FromBody] CreateLogDto createLogDto)
         {
-             await _registerLogic.RegisterLogAsync<CreateLogDto, Log, ServicioLog>(
-                createLogDto,
-                servicioId,
-                (servicioId, logId) => new ServicioLog { ServicioId = servicioId, LogId = logId });
+            var result = await _registerLogic.RegisterLogAsync(createLogDto);
             return Ok(createLogDto);
         }
 

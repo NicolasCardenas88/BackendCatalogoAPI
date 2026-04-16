@@ -2,10 +2,21 @@
 {
     public class CreateActivoDto
     {
-        public string Codigo { get; set; } = null!;
 
-        public string Nombre { get; set; } = null!;
+        private string _codigo = string.Empty;
+        public string Codigo
+        {
+            get => _codigo;
+            set => _codigo = value?.Trim() ?? string.Empty;
+        }
 
-        public bool? TieneMfa { get; set; }
+        private string _nombre = string.Empty;
+        public string Nombre
+        {
+            get => _nombre;
+            set => _nombre = value?.Trim() ?? string.Empty;
+        }
+
+        public bool? TieneMFA { get; set; }
     }
 }

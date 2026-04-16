@@ -8,7 +8,9 @@ using BackendCatalogoAXA.Model.Dto.DtoCategoriaServidor;
 using BackendCatalogoAXA.Model.Dto.DtoEntorno;
 using BackendCatalogoAXA.Model.Dto.DtoEstado;
 using BackendCatalogoAXA.Model.Dto.DtoFramework;
+using BackendCatalogoAXA.Model.Dto.DtoLog;
 using BackendCatalogoAXA.Model.Dto.DtoMetodoHttp;
+using BackendCatalogoAXA.Model.Dto.DtoModulo;
 using BackendCatalogoAXA.Model.Dto.DtoMotorDB;
 using BackendCatalogoAXA.Model.Dto.DtoProtocolo;
 using BackendCatalogoAXA.Model.Dto.DtoRepositorio;
@@ -42,18 +44,9 @@ namespace BackendCatalogoAXA.Logic.Repository.Interfaces
         Task<bool> RegisterCategoriaServidorAsync(CreateCategoriaServidorDto createCategoriaServidorDto);
         Task<bool> RegisterEntornoAsync(CreateEntornoDto createEntornoDto);
         Task<bool> RegisterActivoAsync(CreateActivoDto createActivoDto);
+        Task<bool> RegisterLogAsync(CreateLogDto createLogDto);
+        Task<bool> RegisterModuloAsync(CreateModuloDto createModuloDto);
 
-        Task<bool> RegisterLogAsync<TCreateDto, TEntidad, TRelacion>(
-        TCreateDto createDto,
-        int idPadre,
-        Func<int, int, TRelacion> crearRelacion)
-        where TEntidad : class
-        where TRelacion : class;
-        Task<bool> RegisterModuloAsync<TCreateDto, TEntidad, TRelacion>(
-        TCreateDto createDto,
-        int idPadre,
-        Func<int, int, TRelacion> crearRelacion)
-        where TEntidad : class
-        where TRelacion : class;
+
     }
 }

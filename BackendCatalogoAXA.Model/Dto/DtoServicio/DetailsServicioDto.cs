@@ -19,6 +19,5 @@ namespace BackendCatalogoAXA.Model.Dto.DtoServicio
         public List<BalanceoServicioDto> BalanceoServicios { get; set; } = new();
         public List<ServicioLogDto> ServicioLogs { get; set; } = new();
         public List<ServicioModuloDto> ServicioModulos { get; set; } = new();
-        public int ServicioId { get; internal set; }
     }
 }

@@ -2,7 +2,18 @@
 {
     public class LogDto
     {
-        public string Codigo { get; set; }
-        public string RutaLog { get; set; }
+        private string? _codigo;
+        public string? Codigo
+        {
+            get => _codigo;
+            set => _codigo = value?.Trim();
+        }
+
+        private string? _rutaLog;
+        public string? RutaLog
+        {
+            get => _rutaLog;
+            set => _rutaLog = value?.Trim();
+        }
     }
 }

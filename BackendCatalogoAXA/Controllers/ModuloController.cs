@@ -11,14 +11,11 @@ namespace BackendCatalogoAXA.Controllers
     {
         private readonly IRegisterLogic _registerLogic = registerLogic;
 
-        [HttpPost("servicio/{servicioId}/modulo")]
-        public async Task<IActionResult>  CreateModulo (int servicioId, [FromBody] CreateModuloDto createModuloDto)
+        [HttpPost("servicio/modulo")]
+        public async Task<CreateModuloDto>  CreateModuloAsync ([FromBody] CreateModuloDto createModuloDto)
         {
-            await _registerLogic.RegisterLogAsync<CreateModuloDto, Modulo, ServicioModulo>(
-            createModuloDto,
-            servicioId,
-            (servicioId, moduloId) => new ServicioModulo { ServicioId = servicioId, ModuloId = moduloId });
-            return Ok(createModuloDto);
+            var result = await _registerLogic.RegisterModuloAsync(createModuloDto);
+            return createModuloDto;
         }
     }
 }
