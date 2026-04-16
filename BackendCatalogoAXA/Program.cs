@@ -49,6 +49,9 @@ builder.Services.AddScoped<IFrameworkLogic, FrameworkLogic>();
 builder.Services.AddScoped<ILogData, LogData>();
 builder.Services.AddScoped<ILogLogic, LogLogic>();
 
+builder.Services.AddScoped<IMetodoHttpData, MetodoHttpData>();
+builder.Services.AddScoped<IMetodoHttpLogic, MetodoHttpLogic>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
