@@ -5,6 +5,7 @@ namespace BackendCatalogoAXA.Model.Dto.DtoLog
     {
         private string? _Codigo;
         private string? _RutaLog;
+        private int? _ServicioId;
         public string? Codigo
         {
             get => _Codigo;
@@ -15,6 +16,7 @@ namespace BackendCatalogoAXA.Model.Dto.DtoLog
             get => _RutaLog;
             set => _RutaLog = value.Trim();
         }
+        public int? ServicioId { get => _ServicioId; set => _ServicioId = value; }
 
 
     }

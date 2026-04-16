@@ -6,6 +6,7 @@ using BackendCatalogoAXA.Model.Dto.DtoAmbiente;
 using BackendCatalogoAXA.Model.Dto.DtoApimanager;
 using BackendCatalogoAXA.Model.Dto.DtoBalanceo;
 using BackendCatalogoAXA.Model.Dto.DtoFiltroServicio;
+using BackendCatalogoAXA.Model.Dto.DtoLog;
 using BackendCatalogoAXA.Model.Dto.DtoMetodoHttp;
 using BackendCatalogoAXA.Model.Dto.DtoServicio;
 using BackendCatalogoAXA.Model.Dto.DtoServicioModulo;
@@ -91,6 +92,16 @@ namespace BackendCatalogoAXA.Model.Repository.Implementation
                             Url = b.Urlcompleta
                         }).ToList(),
 
+                    ServicioLogs = s.ServicioLogs
+                   .Select(b => new ServicioLogDto
+                   {
+                       Log = b.Log == null ? null : new LogDto
+                       {
+                           Codigo = b.Log.Codigo,
+                           RutaLog = b.Log.RutaLog
+                       }
+                   }).ToList(),
+                
                     ServicioModulos = s.ServicioModulos
                         .Select(m => new ServicioModuloDto
                         {
