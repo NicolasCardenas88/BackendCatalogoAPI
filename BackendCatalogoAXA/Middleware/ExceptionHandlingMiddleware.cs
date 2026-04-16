@@ -1,6 +1,7 @@
 using System.Net;
 using System.Text.Json;
 using BackendCatalogoAXA.Logic.Exceptions;
+using Microsoft.AspNetCore.Http.HttpResults;
 
 namespace BackendCatalogoAXA.Middleware
 {
@@ -28,34 +29,51 @@ namespace BackendCatalogoAXA.Middleware
         private static Task HandleExceptionAsync(HttpContext context, Exception exception)
         {
             HttpStatusCode status;
-            string message = exception.Message;
+            object response;
 
             switch (exception)
             {
-                case ValidationException:
+                case FluentValidation.ValidationException fvEx:
                     status = HttpStatusCode.BadRequest;
+                    response = new
+                    {
+                        statusCode = (int)status,
+                        message = "Errores de validación",
+                        errors = fvEx.Errors.Select(e => new {
+                            field = e.PropertyName,
+                            error = e.ErrorMessage
+                        })
+                    };
                     break;
+                case BadHttpRequestException:
+                    status = HttpStatusCode.BadRequest;
+                    response = new { statusCode = (int)status, message = exception.Message };
+                    break;
+
                 case NotFoundException:
                     status = HttpStatusCode.NotFound;
+                    response = new { statusCode = (int)status, message = exception.Message };
                     break;
+
                 case AlreadyExistsException:
                     status = HttpStatusCode.Conflict;
-
+                    response = new { statusCode = (int)status, message = exception.Message };
                     break;
+
                 case DatabaseException:
                     status = HttpStatusCode.InternalServerError;
+                    response = new { statusCode = (int)status, message = exception.Message };
                     break;
+
                 default:
                     status = HttpStatusCode.InternalServerError;
-                    message = "Ha ocurrido un error interno";
+                    response = new
+                    {
+                        statusCode = (int)status,
+                        message = "Ha ocurrido un error interno"
+                    };
                     break;
             }
-
-            var response = new
-            {
-                statusCode = (int)status,
-                message = message
-            };
 
             context.Response.ContentType = "application/json";
             context.Response.StatusCode = (int)status;
@@ -63,4 +81,5 @@ namespace BackendCatalogoAXA.Middleware
             return context.Response.WriteAsync(JsonSerializer.Serialize(response));
         }
     }
+    
 }
