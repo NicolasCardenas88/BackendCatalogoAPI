@@ -1,5 +1,4 @@
 ﻿using BackendCatalogoAXA.Data.Context;
-using System.Collections.Generic;
 
 namespace BackendCatalogoAXA.Models;
 
