@@ -1,6 +1,5 @@
 ﻿using BackendCatalogoAXA.Data.Context;
 using BackendCatalogoAXA.Logic.Validator.Common;
-using BackendCatalogoAXA.Model.Dto.DtoModulo;
 using FluentValidation;
 using Microsoft.EntityFrameworkCore;
 

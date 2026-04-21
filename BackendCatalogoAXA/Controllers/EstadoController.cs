@@ -6,15 +6,15 @@ namespace BackendCatalogoAXA.Controllers
 {
     [ApiController]
     [Route("api/catalogo")]
-    public class EstadoController(IRegisterLogic registerLogic, IEstadoLogic estadoLogic) : ControllerBase
+    public class EstadoController(IEstadoLogic estadoLogic) : ControllerBase
     {
-        private readonly IRegisterLogic _registerLogic = registerLogic;
+
         private readonly IEstadoLogic _estadoLogic = estadoLogic;
 
         [HttpPost("/estado/V1")]
         public async Task <CreateEstadoDto> CreateEstado([FromBody] CreateEstadoDto createEstadoDto)
         {
-            var result = await _registerLogic.RegisterEstadoAsync(createEstadoDto);
+            var result = await _estadoLogic.RegisterEstadoAsync(createEstadoDto);
             return createEstadoDto;
         }
 

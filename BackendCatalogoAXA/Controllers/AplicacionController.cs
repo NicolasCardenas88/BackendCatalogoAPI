@@ -6,15 +6,15 @@ namespace BackendCatalogoAXA.Controllers
 {
     [ApiController]
     [Route("api/catalogo")]
-    public class AplicacionController(IRegisterLogic registerLogic, IAplicacionLogic appLogic) : ControllerBase
+    public class AplicacionController(IAplicacionLogic appLogic) : ControllerBase
     {
-        private readonly IRegisterLogic _registerLogic = registerLogic;
+        
         private readonly IAplicacionLogic _appLogic = appLogic;
 
         [HttpPost("/aplicacion/V1")]
         public async Task<CreateAplicacionDto> CreateAplicacion([FromBody] CreateAplicacionDto createAplicacionDto)
         {
-            var result = await _registerLogic.RegisterAplicacionAsync(createAplicacionDto);
+            var result = await appLogic.RegisterAplicacionAsync(createAplicacionDto);
             return createAplicacionDto;
 
         }
