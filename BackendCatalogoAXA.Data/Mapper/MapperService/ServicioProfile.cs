@@ -12,7 +12,6 @@ using BackendCatalogoAXA.Model.Dto.DtoEstado;
 using BackendCatalogoAXA.Model.Dto.DtoFramework;
 using BackendCatalogoAXA.Model.Dto.DtoLog;
 using BackendCatalogoAXA.Model.Dto.DtoMetodoHttp;
-using BackendCatalogoAXA.Model.Dto.DtoModulo;
 using BackendCatalogoAXA.Model.Dto.DtoMotorDB;
 using BackendCatalogoAXA.Model.Dto.DtoProtocolo;
 using BackendCatalogoAXA.Model.Dto.DtoRepositorio;

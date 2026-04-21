@@ -7,10 +7,8 @@ using BackendCatalogoAXA.Model.Dto.DtoApimanager;
 using BackendCatalogoAXA.Model.Dto.DtoBalanceo;
 using BackendCatalogoAXA.Model.Dto.DtoFiltroServicio;
 using BackendCatalogoAXA.Model.Dto.DtoLog;
-using BackendCatalogoAXA.Model.Dto.DtoMetodoHttp;
 using BackendCatalogoAXA.Model.Dto.DtoServicio;
 using BackendCatalogoAXA.Model.Dto.DtoServicioModulo;
-using BackendCatalogoAXA.Model.Dto.Modulo;
 using Microsoft.EntityFrameworkCore;
 
 namespace BackendCatalogoAXA.Model.Repository.Implementation
@@ -70,15 +68,12 @@ namespace BackendCatalogoAXA.Model.Repository.Implementation
                     ApiManager = s.Apimanagers
                         .Where(a => string.IsNullOrEmpty(filtro.Url) ||
                                a.Url.Contains(filtro.Url)) // filtra solo los apimanagers que coinciden
-                        .Select(a => new ApiManagerDto
+                        .Select(a => new ApiManagerDetailsDto
                         {
                             Codigo = a.Codigo.Trim(),
                             NombreApi = a.NombreApi,
                             Url = a.Url,
-                            MetodoHttp = a.MetodoHttp == null ? null : new MetodoHttpDto
-                            {
-                                Nombre = a.MetodoHttp.Nombre
-                            },
+                            MetodoHttp = a.MetodoHttp.Nombre.Trim(),
                             Ambiente = a.Ambiente == null ? null : new AmbienteDto
                             {
                                 Codigo = a.Ambiente.Codigo,
@@ -89,27 +84,30 @@ namespace BackendCatalogoAXA.Model.Repository.Implementation
                     BalanceoServicios = s.BalanceoServicios
                         .Select(b => new BalanceoServicioDto
                         {
-                            Url = b.Urlcompleta
+                            CodigoBalanceo = b.Balanceo.Codigo.Trim(),
+                            UrlBase = b.Balanceo.Url,
+                            UrlCompleta = b.Urlcompleta,
+                            Ambiente = b.Balanceo.Ambiente == null ? null : new AmbienteDto
+                            {
+                                Codigo = b.Balanceo.Ambiente.Codigo,
+                                Descripcion = b.Balanceo.Ambiente.Descripcion
+                            }
                         }).ToList(),
 
                     ServicioLogs = s.ServicioLogs
                    .Select(b => new ServicioLogDto
                    {
-                       Log = b.Log == null ? null : new LogDto
-                       {
-                           Codigo = b.Log.Codigo,
-                           RutaLog = b.Log.RutaLog
-                       }
+                       CodigoLog = b.Log.Codigo.Trim(),
+                       RutaLog = b.Log.RutaLog.Trim()
+
                    }).ToList(),
                 
                     ServicioModulos = s.ServicioModulos
                         .Select(m => new ServicioModuloDto
                         {
-                            Modulo = m.Modulo == null ? null : new ModuloDto
-                            {
-                                Codigo = m.Modulo.Codigo,
-                                Nombre = m.Modulo.Nombre
-                            }
+                            CodigoModulo = m.Modulo.Codigo.Trim(),
+                            NombreModulo = m.Modulo.Nombre.Trim()
+
                         }).ToList()
                 })
                 .ToListAsync();
