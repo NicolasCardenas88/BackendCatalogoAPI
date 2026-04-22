@@ -1,14 +1,4 @@
-﻿using BackendCatalogoAXA.Data.Context;
-using BackendCatalogoAXA.Data.Repository.Interfaces;
-using BackendCatalogoAXA.Model.Dto.DtoBalanceo;
-using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace BackendCatalogoAXA.Data.Repository.Implementation
+﻿namespace BackendCatalogoAXA.Data.Repository.Implementation
 {
     //public class BalanceoData(CatalogoServiciosAxaContext context) : IBalanceoData
     //{

@@ -6,11 +6,9 @@ namespace BackendCatalogoAXA.Controllers
 {
     [ApiController]
     [Route("api/catalogo")]
-    public class ServiceController (IServiceLogic serviceLogic, 
-        IRegisterLogic registerLogic) : ControllerBase
+    public class ServiceController (IServiceLogic serviceLogic) : ControllerBase
     {
         private readonly IServiceLogic _serviceLogic = serviceLogic;
-        private readonly IRegisterLogic _registerLogic = registerLogic;
 
         [HttpGet("/findservicio/{id}")]
         public  async Task<IActionResult> GetServiceById(int id)
@@ -33,7 +31,7 @@ namespace BackendCatalogoAXA.Controllers
         [HttpPost("/createservicio")]
         public async  Task<CrearServicioDto> CreateServicioAsync([FromBody] CrearServicioDto crearServicioDto)
         {
-            var result = await _registerLogic.RegisterServiceAsync(crearServicioDto);
+            var result = await _serviceLogic.RegisterServiceAsync(crearServicioDto);
             return crearServicioDto;
         }
 

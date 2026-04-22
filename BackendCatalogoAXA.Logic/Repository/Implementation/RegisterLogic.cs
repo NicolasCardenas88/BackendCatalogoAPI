@@ -1,25 +1,16 @@
 ﻿using AutoMapper;
 using BackendCatalogoAXA.Data.Context;
-using BackendCatalogoAXA.Logic.Exceptions;
 using BackendCatalogoAXA.Logic.Repository.Interfaces;
 using BackendCatalogoAXA.Model.Dto.CrearServicioDtoServicio;
 using BackendCatalogoAXA.Model.Dto.DtoActivo;
-using BackendCatalogoAXA.Model.Dto.DtoAmbiente;
-using BackendCatalogoAXA.Model.Dto.DtoApimanager;
 using BackendCatalogoAXA.Model.Dto.DtoAplicacion;
 using BackendCatalogoAXA.Model.Dto.DtoBalanceo;
 using BackendCatalogoAXA.Model.Dto.DtoCategoriaServidor;
-using BackendCatalogoAXA.Model.Dto.DtoEntorno;
-using BackendCatalogoAXA.Model.Dto.DtoEstado;
-using BackendCatalogoAXA.Model.Dto.DtoFramework;
-using BackendCatalogoAXA.Model.Dto.DtoLog;
 using BackendCatalogoAXA.Model.Dto.DtoMetodoHttp;
-using BackendCatalogoAXA.Model.Dto.DtoModulo;
 using BackendCatalogoAXA.Model.Dto.DtoMotorDB;
 using BackendCatalogoAXA.Model.Dto.DtoProtocolo;
 using BackendCatalogoAXA.Model.Dto.DtoRepositorio;
 using BackendCatalogoAXA.Model.Dto.DtoRepositorioColeccion;
-using BackendCatalogoAXA.Model.Dto.DtoServicioModulo;
 using BackendCatalogoAXA.Model.Dto.DtoServidor;
 using BackendCatalogoAXA.Model.Dto.DtoSistemaOperativo;
 using BackendCatalogoAXA.Model.Dto.DtoTipoServicio;
@@ -37,75 +28,8 @@ namespace BackendCatalogoAXA.Logic.Repository.Implementation
         private readonly CatalogoServiciosAxaContext _context = context;
         private readonly IValidadationService _validationService = validadationService;
 
-        #region Crear Servicio
-        public async Task<bool> RegisterServiceAsync(CrearServicioDto crearServicioDto)
-        {
-                await _validationService.ValidateAsync(crearServicioDto);
-                var servicio = _mapper.Map<Servicio>(crearServicioDto);
-                await _context.AddAsync(servicio);
-                await _context.SaveChangesAsync();
+        
 
-                var servidores = _mapper.Map<List<ServicioServidor>>(crearServicioDto.RelacionServidor);
-                servidores.ForEach(s => s.ServicioId = servicio.ServicioId);
-
-                var repositorios = _mapper.Map<List<RepositorioServicio>>(crearServicioDto.RelacionRepositorio);
-                repositorios.ForEach(r => r.ServicioId = servicio.ServicioId);
-
-                await _context.AddRangeAsync(servidores);
-                await _context.AddRangeAsync(repositorios);
-                await _context.SaveChangesAsync();
-                return true;
-
-        }
-        #endregion
-
-        #region Crear Framework
-        public async Task<bool> RegisterFrameworkAsync(CreateFrameworkDto createFrameworkDto)
-        {
-
-            await _validationService.ValidateAsync(createFrameworkDto);
-            await _register.RegisterLogicAsync(_mapper.Map<Framework>(createFrameworkDto));
-            return true;
-        }
-        #endregion
-
-        #region Crear APIManager
-        public async Task<bool> RegisterApiManagerAsync(CreateApiManagerDto createApiManagerDto)
-        {
-            await _validationService.ValidateAsync(createApiManagerDto);
-            await _register.RegisterLogicAsync(_mapper.Map<Apimanager>(createApiManagerDto));
-            return true;
-        }
-        #endregion
-
-        #region Crear Log
-        public async Task<bool> RegisterLogAsync(CreateLogDto dto)
-        {
-            var log = _mapper.Map<Log>(dto);
-            await _register.RegisterLogicAsync(log);
-
-            var servicioLog = new ServicioLog
-            {
-                LogId = log.LogId,
-                ServicioId = (int)dto.ServicioId
-            };
-
-            await _register.RegisterLogicAsync(servicioLog);
-
-            return true;
-        }
-
-       
-        #endregion
-
-        #region Crear Metodo Http
-        public async Task<bool> RegisterMetodoHttpAsync(CreateMetodoHttpDto createMetodoHttpDto)
-        {
-            await _validationService.ValidateAsync(createMetodoHttpDto);
-            await _register.RegisterLogicAsync(_mapper.Map<MetodoHttp>(createMetodoHttpDto));
-            return true;
-        }
-        #endregion
 
         #region Crear Repositorio Coleccion
         public async Task<bool> RegisterRepositorioColeccionAsync(CreateRepositoriosColeccionDto createRepositoriosColeccionDto)
@@ -127,10 +51,15 @@ namespace BackendCatalogoAXA.Logic.Repository.Implementation
 
         #region Crear Modulo con relación a Servicio Modulo
         public async Task<bool> RegisterModuloAsync(CreateModuloDto dto) {
-            var modulo = _mapper.Map<Modulo>(dto);
-            await _register.RegisterLogicAsync(dto);
+            var modulo = new Modulo
+            {
+                Codigo = dto.Codigo,
+                Nombre = dto.Nombre,
+                AplicacionId = (int)dto.AplicacionId
+            };
+            await _register.RegisterLogicAsync(modulo);
 
-            var servicioModulo = new CreateServicioModuloDto
+            var servicioModulo = new ServicioModulo
             {
                 ServicioId = (int)dto.ServicioId,
                 ModuloId = modulo.ModuloId
@@ -149,14 +78,6 @@ namespace BackendCatalogoAXA.Logic.Repository.Implementation
         }
         #endregion
 
-        #region Crear Estado
-        public async Task<bool> RegisterEstadoAsync(CreateEstadoDto createEstadoDto)
-        {
-            await _validationService.ValidateAsync(createEstadoDto);
-            await _register.RegisterLogicAsync(_mapper.Map<Estado>(createEstadoDto));
-            return true;
-        }
-        #endregion
 
         #region Crear Unidad de Negocio
         public async Task<bool> RegisterUnidadNegocioAsync(CreateUnidadNegocioDto createUnidadNegocioDto)
@@ -176,14 +97,6 @@ namespace BackendCatalogoAXA.Logic.Repository.Implementation
         }
         #endregion
 
-        #region Crear Ambiente
-        public async Task<bool> RegisterAmbienteAsync(CreateAmbienteDto createAmbienteDto)
-        {
-            await _validationService.ValidateAsync(createAmbienteDto);
-            await _register.RegisterLogicAsync(_mapper.Map<Ambiente>(createAmbienteDto));
-            return true;
-        }
-        #endregion
 
         #region Crear Repositorio
         public async Task<bool> RegisterRepositorioAsync(CreateRepositorioDto createRepositorioDto)
@@ -258,14 +171,6 @@ namespace BackendCatalogoAXA.Logic.Repository.Implementation
         }
         #endregion
 
-        #region Crear Entorno
-        public async Task<bool> RegisterEntornoAsync(CreateEntornoDto createEntornoDto)
-        {
-            await _validationService.ValidateAsync(createEntornoDto);
-            var result = await _register.RegisterLogicAsync(_mapper.Map<Entorno>(createEntornoDto));
-            return true;
-        }
-        #endregion
 
         #region Crear Activo
         public async Task<bool> RegisterActivoAsync(CreateActivoDto createActivoDto)

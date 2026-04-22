@@ -15,7 +15,7 @@ namespace BackendCatalogoAXA.Model.Dto.DtoServicio
 
         public string? Propietario { get; set; }
 
-        public List<ApiManagerDto> ApiManager { get; set; } = new();
+        public List<ApiManagerDetailsDto> ApiManager { get; set; } = new();
         public List<BalanceoServicioDto> BalanceoServicios { get; set; } = new();
         public List<ServicioLogDto> ServicioLogs { get; set; } = new();
         public List<ServicioModuloDto> ServicioModulos { get; set; } = new();

@@ -1,6 +1,5 @@
 ﻿using BackendCatalogoAXA.Data.Context;
 using BackendCatalogoAXA.Logic.Validator.Common;
-using BackendCatalogoAXA.Model.Dto.DtoModulo;
 using FluentValidation;
 using Microsoft.EntityFrameworkCore;
 
@@ -10,16 +9,39 @@ namespace BackendCatalogoAXA.Logic.Validator
     {
         public ValidatorCreateModulo (CatalogoServiciosAxaContext context)
         {
-            RuleFor(x => x.Codigo).CodigoValido(10).YaExisteAsync(
-                context, (ctx, codigo) =>
-                ctx.Set<Aplicacion>().AnyAsync(s => s.Codigo == codigo), "Codigo"
+            RuleFor(x => x.Codigo)
+                .NotEmpty().WithMessage("Codigo es requerido")
+                .CodigoValido(20)
+                .YaExisteAsync(
+                    context,
+                    (ctx, codigo) => ctx.Set<Modulo>()
+                        .AnyAsync(m => m.Codigo.ToUpper() == codigo.ToUpper()),
+                    "Codigo"
                 );
-            RuleFor(x => x.AplicacionId).IdRelacionValido("AplicacionId").NoExisteIdRelacionAsync
-                (
-                  context, (ctx, aplicacionId) => ctx.Set<Aplicacion>().AnyAsync(s => s.AplicacionId == aplicacionId), "AplicacionId"
 
+            RuleFor(x => x.Nombre)
+                .NotEmpty().WithMessage("Nombre es requerido")
+                .NombreValido(150);
+
+            RuleFor(x => x.AplicacionId)
+                .NotEmpty().WithMessage("AplicacionId es requerido")
+                .GreaterThan(0).WithMessage("AplicacionId debe ser mayor a 0")
+                .NoExisteIdRelacionAsync(
+                    context,
+                    (ctx, id) => ctx.Set<Aplicacion>()
+                        .AnyAsync(a => a.AplicacionId == id),
+                    "AplicacionId"
                 );
-            RuleFor(x => x.Nombre).NombreValido(200);
+
+            RuleFor(x => x.ServicioId)
+                .NotEmpty().WithMessage("ServicioId es requerido")
+                .GreaterThan(0).WithMessage("ServicioId debe ser mayor a 0")
+                .NoExisteIdRelacionAsync(
+                    context,
+                    (ctx, id) => ctx.Set<Servicio>()
+                        .AnyAsync(s => s.ServicioId == id),
+                    "ServicioId"
+                );
         }
     }
 }

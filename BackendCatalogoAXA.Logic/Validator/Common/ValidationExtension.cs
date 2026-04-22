@@ -1,6 +1,5 @@
 ﻿using FluentValidation;
 using Microsoft.EntityFrameworkCore;
-using System.Threading.Tasks;
 namespace BackendCatalogoAXA.Logic.Validator.Common
 {
     public static class ValidationExtension

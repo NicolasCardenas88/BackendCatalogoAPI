@@ -1,25 +1,12 @@
-﻿namespace BackendCatalogoAXA.Model.Dto.DtoModulo
+﻿public class CreateModuloDto
 {
-    public class CreateModuloDto
-    {
-        private string? _codigo;
+    private string? _codigo;
+    private string? _nombre;
 
-        public int AplicacionId { get; set; }
+    public string? Codigo { get => _codigo; set => _codigo = value?.Trim();}
+    public string? Nombre { get => _nombre;set => _nombre = value?.Trim();}
 
-        private string? _nombre;
+    public int AplicacionId { get; set; }
 
-        public int ServicioId { get; set; }
-
-         public string? Nombre
-        {
-            get => _nombre;
-            set => _nombre = value?.Trim();
-        }
-
-        public string? Codigo
-        {
-            get => _codigo;
-            set => _codigo = value?.Trim();
-        }
-    }
+    public int ServicioId { get; set; }
 }

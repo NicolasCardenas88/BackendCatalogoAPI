@@ -6,15 +6,15 @@ namespace BackendCatalogoAXA.Controllers
 {
     [ApiController]
     [Route("api/catalogo")]
-    public class EntornoController(IRegisterLogic registerLogic, IEntornoLogic entornoLogic) : ControllerBase
+    public class EntornoController(IEntornoLogic entornoLogic) : ControllerBase
     {
-        private readonly IRegisterLogic _registerLogic = registerLogic;
+        
         private readonly IEntornoLogic _entornoLogic = entornoLogic;
 
         [HttpPost("/entorno/V1")]
         public async Task<CreateEntornoDto> CreateEntornoAsync([FromBody] CreateEntornoDto createEntornoDto)
         {
-            var result = await _registerLogic.RegisterEntornoAsync(createEntornoDto);
+            var result = await _entornoLogic.RegisterEntornoAsync(createEntornoDto);
             return createEntornoDto;
         }
 

@@ -5,12 +5,10 @@ using BackendCatalogoAXA.Logic.Repository.Implementation;
 using BackendCatalogoAXA.Logic.Repository.Interfaces;
 using BackendCatalogoAXA.Logic.Validator;
 using BackendCatalogoAXA.Middleware;
-using BackendCatalogoAXA.Model.Mapper.MapperService;
 using BackendCatalogoAXA.Model.Repository.Implementation;
 using BackendCatalogoAXA.Model.Repository.Interfaces;
 using FluentValidation;
 using Microsoft.EntityFrameworkCore;
-using System;
 
 var builder = WebApplication.CreateBuilder(args);
 

@@ -1,6 +1,4 @@
-﻿using BackendCatalogoAXA.Model.Dto.DtoAplicacion;
-
-namespace BackendCatalogoAXA.Model.Dto.Modulo
+﻿namespace BackendCatalogoAXA.Model.Dto.Modulo
 {
     public class ModuloDto
     {
@@ -8,6 +6,6 @@ namespace BackendCatalogoAXA.Model.Dto.Modulo
         public string? Nombre { get; set; }
 
         // Se conserva la relación con Aplicacion
-        public AplicacionDto? AplicacionId { get; set; }
+        public string? CodigoAplicacion { get; set; }
     }
 }

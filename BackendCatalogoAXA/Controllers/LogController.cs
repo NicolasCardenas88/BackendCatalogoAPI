@@ -1,27 +1,21 @@
-﻿using BackendCatalogoAXA.Data.Context;
-using BackendCatalogoAXA.Logic.Repository.Interfaces;
+﻿using BackendCatalogoAXA.Logic.Repository.Interfaces;
 using BackendCatalogoAXA.Model.Dto.DtoLog;
 using Microsoft.AspNetCore.Mvc;
-using System.Threading.Tasks;
 
 namespace BackendCatalogoAXA.Controllers
 {
     [ApiController]
     [Route("api/catalogo")]
-    public class LogController(
-        IRegisterLogic registerLogic,
-        ILogLogic logLogic) : ControllerBase
+    public class LogController(ILogLogic logLogic) : ControllerBase
     {
-        private readonly IRegisterLogic _registerLogic = registerLogic;
         private readonly ILogLogic _logLogic = logLogic;
 
 
         [HttpPost("servicio/logs/v1")]
-        public async Task<IActionResult> CreateLogAsync(
-            [FromBody] CreateLogDto createLogDto)
+        public async Task<CreateLogDto> CreateLogAsync([FromBody] CreateLogDto createLogDto)
         {
-            var result = await _registerLogic.RegisterLogAsync(createLogDto);
-            return Ok(result);
+            var result = await _logLogic.RegisterLogAsync(createLogDto);
+            return createLogDto;
         }
 
         [HttpGet("logs/V1")]
