@@ -14,13 +14,14 @@ namespace BackendCatalogoAXA.Logic.Repository.Implementation
 {
     public class ServiceLogic(IGetData getData, IRegisterData register,
         IValidadationService validadationService,
-        IMapper mapper
+        IMapper mapper, CatalogoServiciosAxaContext context
         ) : IServiceLogic
     {
         private readonly IGetData _getData = getData;
         private readonly IRegisterData _register = register;
         private readonly IValidadationService _validationService = validadationService;
         private readonly IMapper _mapper = mapper;
+        private readonly CatalogoServiciosAxaContext _context = context;
 
         public async Task<DetailsServicioDto> FindServicioByIdAsync(int id)
         {
