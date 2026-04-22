@@ -1,4 +1,6 @@
-﻿
+﻿using BackendCatalogoAXA.Data.Context;
+using System.Collections.Generic;
+
 namespace BackendCatalogoAXA.Models;
 
 public partial class Activo
@@ -10,4 +12,6 @@ public partial class Activo
     public string Nombre { get; set; } = null!;
 
     public bool? TieneMfa { get; set; }
+
+    public virtual ICollection<Aplicacion> Aplicacions { get; set; } = new List<Aplicacion>();
 }

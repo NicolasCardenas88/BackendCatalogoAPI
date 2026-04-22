@@ -1,12 +1,12 @@
-﻿namespace BackendCatalogoAXA.Data.Context;
+﻿using BackendCatalogoAXA.Models;
+
+namespace BackendCatalogoAXA.Data.Context;
 
 public partial class Aplicacion
 {
     public int AplicacionId { get; set; }
 
     public string Codigo { get; set; } = null!;
-
-    public string ActivoId { get; set; } = null!;
 
     public string NombreApp { get; set; } = null!;
 
@@ -23,6 +23,10 @@ public partial class Aplicacion
     public string? Urlprod { get; set; }
 
     public int? UnidadNegocioId { get; set; }
+
+    public int? ActivoId { get; set; }
+
+    public virtual Activo? Activo { get; set; }
 
     public virtual Estado Estado { get; set; } = null!;
 

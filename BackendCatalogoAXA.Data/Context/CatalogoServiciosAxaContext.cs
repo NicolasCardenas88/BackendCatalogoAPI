@@ -86,10 +86,10 @@ public partial class CatalogoServiciosAxaContext : DbContext
                 .HasMaxLength(200)
                 .IsUnicode(false);
             entity.Property(e => e.TieneMfa).HasColumnName("TieneMFA");
-        });    
+        });
 
 
-    modelBuilder.Entity<Ambiente>(entity =>
+        modelBuilder.Entity<Ambiente>(entity =>
         {
             entity.ToTable("Ambiente");
 
