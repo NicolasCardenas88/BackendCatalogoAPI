@@ -25,6 +25,7 @@ namespace BackendCatalogoAXA.Logic.Repository.Implementation
         #region Crear Log
         public async Task<bool> RegisterLogAsync(CreateLogDto dto)
         {
+            await _validationService.ValidateAsync(dto);
             var log = _mapper.Map<Log>(dto);
             await _register.RegisterLogicAsync(log);
 
