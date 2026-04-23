@@ -7,7 +7,7 @@ namespace BackendCatalogoAXA.Logic.Validator
 {
     public class ValidatorCreateModulo : AbstractValidator<CreateModuloDto>
     {
-        public ValidatorCreateModulo (CatalogoServiciosAxaContext context)
+        public ValidatorCreateModulo(CatalogoServiciosAxaContext context)
         {
             RuleFor(x => x.Codigo)
                 .NotEmpty().WithMessage("Codigo es requerido")

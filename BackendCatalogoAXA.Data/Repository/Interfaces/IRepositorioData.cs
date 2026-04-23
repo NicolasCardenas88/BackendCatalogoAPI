@@ -2,8 +2,8 @@
 
 namespace BackendCatalogoAXA.Data.Repository.Interfaces
 {
-    public interface IModuloData
+    public interface IRepositorioData
     {
-        Task<List<Modulo>> GetAllAsync();
+        Task<List<Repositorio>> GetAllAsync();
     }
 }

@@ -7,7 +7,8 @@ using BackendCatalogoAXA.Model.Repository.Interfaces;
 
 namespace BackendCatalogoAXA.Logic.Repository.Implementation
 {
-    public class AmbienteLogic(IAmbienteData data,
+    public class AmbienteLogic(
+        IAmbienteData data,
         IMapper mapper,
         IRegisterData registerData,
         IValidadationService validadationService) : IAmbienteLogic
@@ -20,7 +21,6 @@ namespace BackendCatalogoAXA.Logic.Repository.Implementation
         public async Task<List<AmbienteDto>> getAllAsync()
         {
             var resp = await _data.getAllAsync();
-
             return resp.Select(a => new AmbienteDto
             {
                 Codigo = a.Codigo,
