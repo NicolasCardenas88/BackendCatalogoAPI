@@ -8,6 +8,6 @@ namespace BackendCatalogoAXA.Model.Dto.Modulo
         public string? Nombre { get; set; }
 
         // Se conserva la relación con Aplicacion
-        public AplicacionDto? AplicacionId { get; set; }
+        public AplicacionDto? Aplicacion { get; set; }
     }
 }

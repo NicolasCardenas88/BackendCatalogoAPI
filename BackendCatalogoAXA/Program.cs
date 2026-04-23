@@ -5,12 +5,10 @@ using BackendCatalogoAXA.Logic.Repository.Implementation;
 using BackendCatalogoAXA.Logic.Repository.Interfaces;
 using BackendCatalogoAXA.Logic.Validator;
 using BackendCatalogoAXA.Middleware;
-using BackendCatalogoAXA.Model.Mapper.MapperService;
 using BackendCatalogoAXA.Model.Repository.Implementation;
 using BackendCatalogoAXA.Model.Repository.Interfaces;
 using FluentValidation;
 using Microsoft.EntityFrameworkCore;
-using System;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -39,6 +37,14 @@ builder.Services.AddScoped<IEstadoData, EstadoData>();
 builder.Services.AddScoped<IFrameworkData, FrameworkData>();
 builder.Services.AddScoped<ILogData, LogData>();
 builder.Services.AddScoped<IMetodoHttpData, MetodoHttpData>();
+builder.Services.AddScoped<IModuloData, ModuloData>();
+builder.Services.AddScoped<IMotorDBData, MotorDBData>();
+builder.Services.AddScoped<IProtocoloData, ProtocoloData>();
+builder.Services.AddScoped<IRepositorioData, RepositorioData>();
+builder.Services.AddScoped<IRepositorioColeccionData, RepositorioColeccionData>();
+builder.Services.AddScoped<ISistemaOperativoData, SistemaOperativoData>();
+builder.Services.AddScoped<ITipoServicioData, TipoServicioData>();
+builder.Services.AddScoped<IUnidadNegocioData, UnidadNegocioData>();
 
 // -------------------- LOGIC (Scoped) --------------------
 builder.Services.AddScoped<IAmbienteLogic, AmbienteLogic>();
@@ -49,6 +55,14 @@ builder.Services.AddScoped<IEstadoLogic, EstadoLogic>();
 builder.Services.AddScoped<IFrameworkLogic, FrameworkLogic>();
 builder.Services.AddScoped<ILogLogic, LogLogic>();
 builder.Services.AddScoped<IMetodoHttpLogic, MetodoHttpLogic>();
+builder.Services.AddScoped<IModuloLogic, ModuloLogic>();
+builder.Services.AddScoped<IMotorDBLogic, MotorDBLogic>();
+builder.Services.AddScoped<IProtocoloLogic, ProtocoloLogic>();
+builder.Services.AddScoped<IRepositorioLogic, RepositorioLogic>();
+builder.Services.AddScoped<IRepositorioColeccionLogic, RepositorioColeccionLogic>();
+builder.Services.AddScoped<ISistemaOperativoLogic, SistemaOperativoLogic>();
+builder.Services.AddScoped<ITipoServicioLogic, TipoServicioLogic>();
+builder.Services.AddScoped<IUnidadNegocioLogic, UnidadNegocioLogic>();
 
 // -------------------- DB CONTEXT --------------------
 builder.Services.AddDbContext<CatalogoServiciosAxaContext>(options =>

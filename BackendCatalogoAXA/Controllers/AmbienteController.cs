@@ -1,6 +1,5 @@
 ﻿using BackendCatalogoAXA.Logic.Repository.Interfaces;
 using BackendCatalogoAXA.Model.Dto.DtoAmbiente;
-using BackendCatalogoAXA.Model.Dto.DtoApimanager;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BackendCatalogoAXA.Controllers

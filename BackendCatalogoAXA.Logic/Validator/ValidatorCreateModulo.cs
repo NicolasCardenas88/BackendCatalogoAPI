@@ -14,9 +14,9 @@ namespace BackendCatalogoAXA.Logic.Validator
                 context, (ctx, codigo) =>
                 ctx.Set<Aplicacion>().AnyAsync(s => s.Codigo == codigo), "Codigo"
                 );
-            RuleFor(x => x.AplicacionId).IdRelacionValido("AplicacionId").NoExisteIdRelacionAsync
+            RuleFor(x => x.AplicacionId).IdRelacionValido("Aplicacion").NoExisteIdRelacionAsync
                 (
-                  context, (ctx, aplicacionId) => ctx.Set<Aplicacion>().AnyAsync(s => s.AplicacionId == aplicacionId), "AplicacionId"
+                  context, (ctx, aplicacionId) => ctx.Set<Aplicacion>().AnyAsync(s => s.AplicacionId == aplicacionId), "Aplicacion"
 
                 );
             RuleFor(x => x.Nombre).NombreValido(200);

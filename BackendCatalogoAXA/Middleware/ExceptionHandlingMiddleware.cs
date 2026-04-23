@@ -1,7 +1,6 @@
 using System.Net;
 using System.Text.Json;
 using BackendCatalogoAXA.Logic.Exceptions;
-using Microsoft.AspNetCore.Http.HttpResults;
 
 namespace BackendCatalogoAXA.Middleware
 {

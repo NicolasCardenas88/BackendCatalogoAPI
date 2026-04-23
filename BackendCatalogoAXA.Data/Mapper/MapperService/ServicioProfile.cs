@@ -39,6 +39,11 @@ namespace BackendCatalogoAXA.Model.Mapper.MapperService
             CreateMap<Servicio, CrearServicioDto>().ReverseMap();
             CreateMap<Apimanager, ApiManagerDto>().ReverseMap();
             CreateMap<Apimanager, CreateApiManagerDto>().ReverseMap();
+            CreateMap<Aplicacion, AplicacionDto>();
+            CreateMap<Activo, ActivoDto>();
+            CreateMap<Estado, EstadoDto>();
+            CreateMap<Framework, FrameworkDto>();
+            CreateMap<UnidadNegocio, UnidadNegocioDto>();
             CreateMap<MetodoHttp, MetodoHttpDto>().ReverseMap();
             CreateMap<MetodoHttp, CreateMetodoHttpDto>().ReverseMap();
             CreateMap<Ambiente, AmbienteDto>().ReverseMap();
@@ -68,6 +73,13 @@ namespace BackendCatalogoAXA.Model.Mapper.MapperService
             CreateMap<ServicioServidor, CreateServicioServidorDto>().ReverseMap();
             CreateMap<RepositorioServicio, CreateServicioRepositorioDto>().ReverseMap();
             CreateMap<Activo, CreateActivoDto>().ReverseMap();
+            CreateMap<MotorBd, MotorDbDto>().ReverseMap();
+            CreateMap<Protocolo, ProtocoloDto>().ReverseMap();
+            CreateMap<Repositorio, RepositorioDto>().ReverseMap();
+            CreateMap<RepositorioColeccion, RepositorioColeccionDto>().ReverseMap();
+            CreateMap<SistemaOperativo, SistemaOperativoDto>().ReverseMap();
+            CreateMap<TipoServicio, TipoServicioDto>().ReverseMap();
+            CreateMap<UnidadNegocio, UnidadNegocioDto>().ReverseMap();
         }
     }
 }

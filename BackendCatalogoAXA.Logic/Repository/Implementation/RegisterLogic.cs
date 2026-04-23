@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using BackendCatalogoAXA.Data.Context;
-using BackendCatalogoAXA.Logic.Exceptions;
 using BackendCatalogoAXA.Logic.Repository.Interfaces;
 using BackendCatalogoAXA.Model.Dto.CrearServicioDtoServicio;
 using BackendCatalogoAXA.Model.Dto.DtoActivo;
